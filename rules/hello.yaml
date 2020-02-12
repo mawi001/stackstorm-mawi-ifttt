@@ -1,0 +1,34 @@
+---
+# Note
+#
+# Each rule can only have one single action section.
+# If you need to run multiple actions when a rule is matched,
+# either configure multiple rules, or create a workflow, and call that.
+name: "hello"
+pack: "mawi_ifttt"
+description: "listen on slack and help me if you can"
+enabled: true
+
+trigger:
+    type: "slack.message"
+
+criteria:
+    trigger.text:
+        type: "contains"
+        pattern : "jenkinsfile?"
+    trigger.user.id:
+        type: "equals"
+        pattern: "U43V31UBD"
+
+action:
+    # ref: "chatops.post_message"
+    # parameters:                        # optional
+    #     channel: "{{ trigger.channel.name }}"
+    #     user: "{{ trigger.user.name }}"
+    #     message: "hi {{ trigger.user.name }} ik stuur je een jenkinsfile"
+
+    ref: "slack.files.upload"
+    parameters:                        # optional
+        title: "jenkinsfile"
+        content: "dikke jenkinsfile"
+        channels: "{{ trigger.channel.name }}"
