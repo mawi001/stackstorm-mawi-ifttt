@@ -14,11 +14,11 @@ trigger:
 
 criteria:
     trigger.text:
-        type: "contains"
-        pattern : "jenkinsfile?"
-    trigger.user.id:
-        type: "equals"
-        pattern: "U43V31UBD"
+        type: "iregex"
+        pattern : "jenkinsfile"
+    trigger.channel.name:
+        type: "regex"
+        pattern: "(woot-ci|automation-dev)"
 
 action:
     # ref: "chatops.post_message"
