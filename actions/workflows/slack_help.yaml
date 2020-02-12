@@ -1,0 +1,29 @@
+---
+version: '1.0'
+description: help users on slack with common questions
+input:
+  - trigger_text
+  - trigger_user_name
+  - trigger_channel_name
+tasks:
+  i_hear_you:
+    action: chatops.post_message
+    input:
+      channel: "#<% ctx().trigger_channel_name %>"
+      message: hi <% ctx().trigger_user_name %>
+      extra:
+        slack:
+          color: good
+    next:
+      - when: '{{ succeeded() }}'
+        do:
+          - help_user
+
+  help_user:
+    action: chatops.post_message
+    input:
+      channel: "#<% ctx().trigger_channel_name %>"
+      message: let me help you with <% trigger_text %>
+      extra:
+        slack:
+          color: good

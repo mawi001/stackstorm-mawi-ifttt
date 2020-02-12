@@ -1,0 +1,17 @@
+---
+description: Help users on slack
+enabled: true
+runner_type: orquesta
+entry_point: workflows/slack_help.yaml
+name: slack_help
+pack: mawi_ifttt
+parameters:
+  trigger_text:
+    type: string
+    required: true
+  trigger_channel_name:
+    type: string
+    required: true
+  trigger_user_name:
+    type: string
+    required: true
