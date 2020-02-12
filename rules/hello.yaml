@@ -36,5 +36,5 @@ action:
     ref: "mawi_ifttt.slack_help"
     parameters:
         trigger_text: "{{ trigger.text }}"
-        trigger_user_name: "{{ trigger.user_name }}"
+        trigger_user_name: "{{ trigger.user.name }}"
         trigger_channel_name: "{{ trigger.channel.name }}"
