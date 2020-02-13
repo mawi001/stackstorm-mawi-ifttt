@@ -21,18 +21,6 @@ criteria:
         pattern: "(woot-ci|automation-dev)"
 
 action:
-    # ref: "chatops.post_message"
-    # parameters:                        # optional
-    #     channel: "{{ trigger.channel.name }}"
-    #     user: "{{ trigger.user.name }}"
-    #     message: "hi {{ trigger.user.name }} ik stuur je een jenkinsfile"
-
-    # ref: "slack.files.upload"
-    # parameters:                        # optional
-    #     title: "jenkinsfile"
-    #     content: "dikke jenkinsfile"
-    #     channels: "{{ trigger.channel.name }}"
-
     ref: "mawi_ifttt.slack_help"
     parameters:
         trigger_text: "{{ trigger.text }}"
