@@ -23,7 +23,21 @@ tasks:
     action: chatops.post_message
     input:
       channel: "#<% ctx().trigger_channel_name %>"
-      message: let me help you with <% trigger_text %>
+      message: I can help you with '<% ctx().trigger_text %>'
+      extra:
+        slack:
+          color: good
+    next:
+      - when: '{{ succeeded() }}'
+        do:
+          - run_action
+
+  # TODO: Select which action to include using subflow
+  run_action:
+    action: chatops.post_message
+    input:
+      channel: "#<% ctx().trigger_channel_name %>"
+      message: Take a look at our examples repo https://github.com/mawi001/jenkins-docker-scripted-pipeline/blob/develop/Jenkinsfile
       extra:
         slack:
           color: good
